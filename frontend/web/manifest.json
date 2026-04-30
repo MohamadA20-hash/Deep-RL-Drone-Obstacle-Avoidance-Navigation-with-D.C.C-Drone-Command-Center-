@@ -1,0 +1,12 @@
+{
+  "name": "AIRSIM Dashboard",
+  "short_name": "AIRSIM",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#101216",
+  "theme_color": "#101216",
+  "description": "AIRSIM drone control dashboard.",
+  "orientation": "landscape",
+  "prefer_related_applications": false,
+  "icons": []
+}

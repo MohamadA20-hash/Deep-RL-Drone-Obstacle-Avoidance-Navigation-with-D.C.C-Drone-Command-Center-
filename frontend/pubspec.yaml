@@ -1,0 +1,32 @@
+name: airsim_dashboard
+description: AIRSIM drone control dashboard - Flutter replica.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # State management
+  flutter_riverpod: ^2.5.1
+
+  # Routing
+  go_router: ^13.2.0
+
+  # Networking + realtime
+  dio: ^5.4.0
+  web_socket_channel: ^2.4.0
+
+  # Token / preference storage
+  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

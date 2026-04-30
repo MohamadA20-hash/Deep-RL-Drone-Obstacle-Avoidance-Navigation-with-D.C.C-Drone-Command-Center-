@@ -1,0 +1,67 @@
+# ---- Java / Maven ----
+backend/target/
+**/target/
+*.class
+*.jar
+*.war
+!backend/.mvn/wrapper/maven-wrapper.jar
+hs_err_pid*
+
+# ---- Flutter / Dart ----
+frontend/build/
+frontend/.dart_tool/
+frontend/.flutter-plugins
+frontend/.flutter-plugins-dependencies
+frontend/.packages
+frontend/.pub-cache/
+frontend/.pub/
+frontend/windows/flutter/ephemeral/
+frontend/linux/flutter/ephemeral/
+frontend/macos/Flutter/ephemeral/
+frontend/ios/.symlinks/
+frontend/ios/Flutter/Flutter.framework
+frontend/ios/Flutter/Flutter.podspec
+**/Generated.xcconfig
+**/generated_plugin_registrant.*
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+
+# ---- IntelliJ / IDE ----
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+*.swp
+
+# ---- Logs / runtime ----
+logs/
+backend/logs/
+*.log
+backend-run.log
+capstone/airsim_testing/bridge_stdout.txt
+capstone/airsim_testing/bridge_stderr.txt
+backend/test-output*.txt
+backend/test-auth.txt
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Secrets / env ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key

@@ -1,0 +1,2371 @@
+{
+  "suite": "ablation",
+  "path_strategy": "roam_goals_continuous",
+  "num_runs": 1,
+  "configs": [
+    {
+      "label": "PureRL",
+      "controller_type": "pure_rl",
+      "results": {
+        "n_runs": 1,
+        "stats": {
+          "success_rate": {
+            "mean": 58.3,
+            "std": 0.0,
+            "min": 58.3,
+            "max": 58.3,
+            "values": [
+              58.3
+            ]
+          },
+          "collision_rate_per_km": {
+            "mean": 5.818,
+            "std": 0.0,
+            "min": 5.818,
+            "max": 5.818,
+            "values": [
+              5.818
+            ]
+          },
+          "collision_rate_per_goal": {
+            "mean": 0.417,
+            "std": 0.0,
+            "min": 0.417,
+            "max": 0.417,
+            "values": [
+              0.417
+            ]
+          },
+          "avg_efficiency_pct": {
+            "mean": 103.2,
+            "std": 0.0,
+            "min": 103.2,
+            "max": 103.2,
+            "values": [
+              103.2
+            ]
+          },
+          "avg_time_to_goal_s": {
+            "mean": 46.0,
+            "std": 0.0,
+            "min": 46.0,
+            "max": 46.0,
+            "values": [
+              46.0
+            ]
+          },
+          "time_efficiency_mps": {
+            "mean": 1.81,
+            "std": 0.0,
+            "min": 1.81,
+            "max": 1.81,
+            "values": [
+              1.81
+            ]
+          },
+          "avg_min_obstacle_m": {
+            "mean": 1.858,
+            "std": 0.0,
+            "min": 1.858,
+            "max": 1.858,
+            "values": [
+              1.858
+            ]
+          },
+          "total_close_calls": {
+            "mean": 90.0,
+            "std": 0.0,
+            "min": 90.0,
+            "max": 90.0,
+            "values": [
+              90.0
+            ]
+          },
+          "recovery_score_pct": {
+            "mean": 44.4,
+            "std": 0.0,
+            "min": 44.4,
+            "max": 44.4,
+            "values": [
+              44.4
+            ]
+          },
+          "altitude_mean_m": {
+            "mean": 5.33,
+            "std": 0.0,
+            "min": 5.33,
+            "max": 5.33,
+            "values": [
+              5.33
+            ]
+          },
+          "altitude_min_m": {
+            "mean": 1.84,
+            "std": 0.0,
+            "min": 1.84,
+            "max": 1.84,
+            "values": [
+              1.84
+            ]
+          },
+          "altitude_max_m": {
+            "mean": 14.34,
+            "std": 0.0,
+            "min": 14.34,
+            "max": 14.34,
+            "values": [
+              14.34
+            ]
+          },
+          "altitude_std_m": {
+            "mean": 1.286,
+            "std": 0.0,
+            "min": 1.286,
+            "max": 1.286,
+            "values": [
+              1.286
+            ]
+          },
+          "post_collision_reset_legs": {
+            "mean": 5.0,
+            "std": 0.0,
+            "min": 5.0,
+            "max": 5.0,
+            "values": [
+              5.0
+            ]
+          },
+          "successes": {
+            "mean": 7.0,
+            "std": 0.0,
+            "min": 7.0,
+            "max": 7.0,
+            "values": [
+              7.0
+            ]
+          },
+          "collisions": {
+            "mean": 5.0,
+            "std": 0.0,
+            "min": 5.0,
+            "max": 5.0,
+            "values": [
+              5.0
+            ]
+          },
+          "stucks": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "timeouts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "total_path_m": {
+            "mean": 859.4,
+            "std": 0.0,
+            "min": 859.4,
+            "max": 859.4,
+            "values": [
+              859.4
+            ]
+          },
+          "total_time_s": {
+            "mean": 472.0,
+            "std": 0.0,
+            "min": 472.0,
+            "max": 472.0,
+            "values": [
+              472.0
+            ]
+          }
+        },
+        "runs": [
+          {
+            "controller": "pure_rl",
+            "controller_label": "Pure RL",
+            "goals_total": 12,
+            "successes": 7,
+            "success_rate": 58.3,
+            "collisions": 5,
+            "collision_rate_per_km": 5.818,
+            "collision_rate_per_goal": 0.417,
+            "stucks": 0,
+            "timeouts": 0,
+            "total_path_m": 859.4,
+            "total_time_s": 472.0,
+            "avg_efficiency_pct": 103.2,
+            "avg_time_to_goal_s": 46.0,
+            "time_efficiency_mps": 1.81,
+            "post_collision_reset_legs": 5,
+            "avg_min_obstacle_m": 1.858,
+            "total_close_calls": 90,
+            "recovery_score_pct": 44.4,
+            "altitude_mean_m": 5.33,
+            "altitude_min_m": 1.84,
+            "altitude_max_m": 14.34,
+            "altitude_std_m": 1.286,
+            "legs": [
+              {
+                "name": "open_east",
+                "goal": [
+                  40.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  39.5,
+                  0.9
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 21.23,
+                "path_length": 38.38,
+                "start_dist": 40.0,
+                "post_collision_reset": false,
+                "efficiency": 104.2,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 334,
+                "altitude_min": 2.39,
+                "altitude_max": 3.7,
+                "altitude_mean": 3.31,
+                "altitude_std": 0.397
+              },
+              {
+                "name": "behind_north_bldg",
+                "goal": [
+                  0.0,
+                  55.0
+                ],
+                "start_pos": [
+                  39.8,
+                  0.8
+                ],
+                "end_pos": [
+                  1.4,
+                  52.3
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 34.8,
+                "path_length": 64.29,
+                "start_dist": 67.22,
+                "post_collision_reset": false,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.669,
+                "close_calls": 15,
+                "steps": 535,
+                "altitude_min": 2.55,
+                "altitude_max": 5.63,
+                "altitude_mean": 4.6,
+                "altitude_std": 0.865
+              },
+              {
+                "name": "west_open",
+                "goal": [
+                  -50.0,
+                  30.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -49.9,
+                  29.0
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 30.86,
+                "path_length": 56.62,
+                "start_dist": 58.31,
+                "post_collision_reset": true,
+                "efficiency": 103.0,
+                "min_obstacle_dist": 3.714,
+                "close_calls": 0,
+                "steps": 466,
+                "altitude_min": 2.99,
+                "altitude_max": 5.18,
+                "altitude_mean": 4.41,
+                "altitude_std": 0.679
+              },
+              {
+                "name": "near_bldg4_NW",
+                "goal": [
+                  -90.0,
+                  65.0
+                ],
+                "start_pos": [
+                  -50.1,
+                  29.2
+                ],
+                "end_pos": [
+                  -90.1,
+                  64.0
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 28.31,
+                "path_length": 51.84,
+                "start_dist": 53.57,
+                "post_collision_reset": false,
+                "efficiency": 103.3,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 418,
+                "altitude_min": 2.88,
+                "altitude_max": 4.9,
+                "altitude_mean": 4.23,
+                "altitude_std": 0.594
+              },
+              {
+                "name": "SE_wall_compound",
+                "goal": [
+                  75.0,
+                  -60.0
+                ],
+                "start_pos": [
+                  -90.3,
+                  64.2
+                ],
+                "end_pos": [
+                  73.9,
+                  -59.1
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 117.15,
+                "path_length": 206.12,
+                "start_dist": 206.78,
+                "post_collision_reset": false,
+                "efficiency": 100.3,
+                "min_obstacle_dist": 0.894,
+                "close_calls": 21,
+                "steps": 1765,
+                "altitude_min": 2.99,
+                "altitude_max": 14.34,
+                "altitude_mean": 8.8,
+                "altitude_std": 3.712
+              },
+              {
+                "name": "south_cluster",
+                "goal": [
+                  -10.0,
+                  -95.0
+                ],
+                "start_pos": [
+                  74.0,
+                  -59.2
+                ],
+                "end_pos": [
+                  -8.9,
+                  -94.8
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 48.42,
+                "path_length": 89.51,
+                "start_dist": 91.3,
+                "post_collision_reset": false,
+                "efficiency": 102.0,
+                "min_obstacle_dist": 3.767,
+                "close_calls": 0,
+                "steps": 734,
+                "altitude_min": 4.11,
+                "altitude_max": 9.04,
+                "altitude_mean": 7.2,
+                "altitude_std": 1.513
+              },
+              {
+                "name": "apartment_ESE",
+                "goal": [
+                  90.0,
+                  -70.0
+                ],
+                "start_pos": [
+                  -9.1,
+                  -94.9
+                ],
+                "end_pos": [
+                  77.3,
+                  -73.5
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 47.68,
+                "path_length": 88.91,
+                "start_dist": 102.14,
+                "post_collision_reset": false,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.74,
+                "close_calls": 7,
+                "steps": 718,
+                "altitude_min": 4.43,
+                "altitude_max": 10.23,
+                "altitude_mean": 8.14,
+                "altitude_std": 1.833
+              },
+              {
+                "name": "building9_NE",
+                "goal": [
+                  97.0,
+                  26.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  75.9,
+                  17.8
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 41.84,
+                "path_length": 77.88,
+                "start_dist": 100.42,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.704,
+                "close_calls": 11,
+                "steps": 688,
+                "altitude_min": 2.99,
+                "altitude_max": 8.83,
+                "altitude_mean": 6.62,
+                "altitude_std": 1.903
+              },
+              {
+                "name": "north_tower",
+                "goal": [
+                  55.0,
+                  110.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  47.4,
+                  88.8
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 53.92,
+                "path_length": 100.73,
+                "start_dist": 122.98,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.706,
+                "close_calls": 9,
+                "steps": 813,
+                "altitude_min": 2.98,
+                "altitude_max": 10.36,
+                "altitude_mean": 7.27,
+                "altitude_std": 2.471
+              },
+              {
+                "name": "NW_tower",
+                "goal": [
+                  -60.0,
+                  115.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -12.9,
+                  28.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 17.39,
+                "path_length": 31.23,
+                "start_dist": 129.71,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.723,
+                "close_calls": 8,
+                "steps": 271,
+                "altitude_min": 2.99,
+                "altitude_max": 5.74,
+                "altitude_mean": 4.24,
+                "altitude_std": 0.804
+              },
+              {
+                "name": "on_north_bldg",
+                "goal": [
+                  0.0,
+                  29.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.8,
+                  28.2
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 15.41,
+                "path_length": 27.31,
+                "start_dist": 29.0,
+                "post_collision_reset": true,
+                "efficiency": 106.2,
+                "min_obstacle_dist": 1.758,
+                "close_calls": 0,
+                "steps": 243,
+                "altitude_min": 2.05,
+                "altitude_max": 3.2,
+                "altitude_mean": 2.79,
+                "altitude_std": 0.392
+              },
+              {
+                "name": "return_home",
+                "goal": [
+                  0.0,
+                  0.0
+                ],
+                "start_pos": [
+                  -0.8,
+                  28.2
+                ],
+                "end_pos": [
+                  0.9,
+                  0.4
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 15.02,
+                "path_length": 26.63,
+                "start_dist": 28.23,
+                "post_collision_reset": false,
+                "efficiency": 106.0,
+                "min_obstacle_dist": 0.62,
+                "close_calls": 19,
+                "steps": 240,
+                "altitude_min": 1.84,
+                "altitude_max": 2.63,
+                "altitude_mean": 2.37,
+                "altitude_std": 0.271
+              }
+            ],
+            "run_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "label": "RL+FixedAlt",
+      "controller_type": "rl_fixed_alt",
+      "results": {
+        "n_runs": 1,
+        "stats": {
+          "success_rate": {
+            "mean": 16.7,
+            "std": 0.0,
+            "min": 16.7,
+            "max": 16.7,
+            "values": [
+              16.7
+            ]
+          },
+          "collision_rate_per_km": {
+            "mean": 54.708,
+            "std": 0.0,
+            "min": 54.708,
+            "max": 54.708,
+            "values": [
+              54.708
+            ]
+          },
+          "collision_rate_per_goal": {
+            "mean": 0.833,
+            "std": 0.0,
+            "min": 0.833,
+            "max": 0.833,
+            "values": [
+              0.833
+            ]
+          },
+          "avg_efficiency_pct": {
+            "mean": 104.1,
+            "std": 0.0,
+            "min": 104.1,
+            "max": 104.1,
+            "values": [
+              104.1
+            ]
+          },
+          "avg_time_to_goal_s": {
+            "mean": 21.2,
+            "std": 0.0,
+            "min": 21.2,
+            "max": 21.2,
+            "values": [
+              21.2
+            ]
+          },
+          "time_efficiency_mps": {
+            "mean": 1.835,
+            "std": 0.0,
+            "min": 1.835,
+            "max": 1.835,
+            "values": [
+              1.835
+            ]
+          },
+          "avg_min_obstacle_m": {
+            "mean": 2.665,
+            "std": 0.0,
+            "min": 2.665,
+            "max": 2.665,
+            "values": [
+              2.665
+            ]
+          },
+          "total_close_calls": {
+            "mean": 25.0,
+            "std": 0.0,
+            "min": 25.0,
+            "max": 25.0,
+            "values": [
+              25.0
+            ]
+          },
+          "recovery_score_pct": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "altitude_mean_m": {
+            "mean": -0.69,
+            "std": 0.0,
+            "min": -0.69,
+            "max": -0.69,
+            "values": [
+              -0.69
+            ]
+          },
+          "altitude_min_m": {
+            "mean": -3.61,
+            "std": 0.0,
+            "min": -3.61,
+            "max": -3.61,
+            "values": [
+              -3.61
+            ]
+          },
+          "altitude_max_m": {
+            "mean": 3.14,
+            "std": 0.0,
+            "min": 3.14,
+            "max": 3.14,
+            "values": [
+              3.14
+            ]
+          },
+          "altitude_std_m": {
+            "mean": 0.817,
+            "std": 0.0,
+            "min": 0.817,
+            "max": 0.817,
+            "values": [
+              0.817
+            ]
+          },
+          "post_collision_reset_legs": {
+            "mean": 10.0,
+            "std": 0.0,
+            "min": 10.0,
+            "max": 10.0,
+            "values": [
+              10.0
+            ]
+          },
+          "successes": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0,
+            "values": [
+              2.0
+            ]
+          },
+          "collisions": {
+            "mean": 10.0,
+            "std": 0.0,
+            "min": 10.0,
+            "max": 10.0,
+            "values": [
+              10.0
+            ]
+          },
+          "stucks": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "timeouts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "total_path_m": {
+            "mean": 182.8,
+            "std": 0.0,
+            "min": 182.8,
+            "max": 182.8,
+            "values": [
+              182.8
+            ]
+          },
+          "total_time_s": {
+            "mean": 103.7,
+            "std": 0.0,
+            "min": 103.7,
+            "max": 103.7,
+            "values": [
+              103.7
+            ]
+          }
+        },
+        "runs": [
+          {
+            "controller": "rl_fixed_alt",
+            "controller_label": "RL+FixedAlt",
+            "goals_total": 12,
+            "successes": 2,
+            "success_rate": 16.7,
+            "collisions": 10,
+            "collision_rate_per_km": 54.708,
+            "collision_rate_per_goal": 0.833,
+            "stucks": 0,
+            "timeouts": 0,
+            "total_path_m": 182.8,
+            "total_time_s": 103.7,
+            "avg_efficiency_pct": 104.1,
+            "avg_time_to_goal_s": 21.2,
+            "time_efficiency_mps": 1.835,
+            "post_collision_reset_legs": 10,
+            "avg_min_obstacle_m": 2.665,
+            "total_close_calls": 25,
+            "recovery_score_pct": 0.0,
+            "altitude_mean_m": -0.69,
+            "altitude_min_m": -3.61,
+            "altitude_max_m": 3.14,
+            "altitude_std_m": 0.817,
+            "legs": [
+              {
+                "name": "open_east",
+                "goal": [
+                  40.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  39.6,
+                  0.9
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 21.23,
+                "path_length": 38.44,
+                "start_dist": 40.0,
+                "post_collision_reset": false,
+                "efficiency": 104.1,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 337,
+                "altitude_min": 2.99,
+                "altitude_max": 3.09,
+                "altitude_mean": 3.0,
+                "altitude_std": 0.021
+              },
+              {
+                "name": "behind_north_bldg",
+                "goal": [
+                  0.0,
+                  55.0
+                ],
+                "start_pos": [
+                  39.9,
+                  0.8
+                ],
+                "end_pos": [
+                  1.4,
+                  51.9
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 34.68,
+                "path_length": 64.13,
+                "start_dist": 67.25,
+                "post_collision_reset": false,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.641,
+                "close_calls": 16,
+                "steps": 535,
+                "altitude_min": 2.95,
+                "altitude_max": 3.14,
+                "altitude_mean": 3.0,
+                "altitude_std": 0.035
+              },
+              {
+                "name": "west_open",
+                "goal": [
+                  -50.0,
+                  30.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.2,
+                  0.0
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.67,
+                "path_length": 0.21,
+                "start_dist": 58.31,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.583,
+                "close_calls": 0,
+                "steps": 11,
+                "altitude_min": -3.45,
+                "altitude_max": -0.32,
+                "altitude_mean": -2.09,
+                "altitude_std": 0.983
+              },
+              {
+                "name": "near_bldg4_NW",
+                "goal": [
+                  -90.0,
+                  65.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -1.0,
+                  0.5
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.91,
+                "path_length": 0.52,
+                "start_dist": 111.02,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 3.025,
+                "close_calls": 0,
+                "steps": 16,
+                "altitude_min": -3.55,
+                "altitude_max": -0.06,
+                "altitude_mean": -2.22,
+                "altitude_std": 1.094
+              },
+              {
+                "name": "SE_wall_compound",
+                "goal": [
+                  75.0,
+                  -60.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.3,
+                  -0.1
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.74,
+                "path_length": 0.34,
+                "start_dist": 96.05,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 3.155,
+                "close_calls": 0,
+                "steps": 12,
+                "altitude_min": -3.54,
+                "altitude_max": -0.26,
+                "altitude_mean": -2.11,
+                "altitude_std": 1.037
+              },
+              {
+                "name": "south_cluster",
+                "goal": [
+                  -10.0,
+                  -95.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.1,
+                  -0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.76,
+                "path_length": 0.36,
+                "start_dist": 95.52,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 3.211,
+                "close_calls": 0,
+                "steps": 12,
+                "altitude_min": -3.58,
+                "altitude_max": -0.3,
+                "altitude_mean": -2.17,
+                "altitude_std": 1.064
+              },
+              {
+                "name": "apartment_ESE",
+                "goal": [
+                  90.0,
+                  -70.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.3,
+                  -0.1
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.7,
+                "path_length": 0.29,
+                "start_dist": 114.02,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.802,
+                "close_calls": 0,
+                "steps": 11,
+                "altitude_min": -3.59,
+                "altitude_max": -0.37,
+                "altitude_mean": -2.19,
+                "altitude_std": 1.028
+              },
+              {
+                "name": "building9_NE",
+                "goal": [
+                  97.0,
+                  26.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  75.5,
+                  18.3
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 41.62,
+                "path_length": 77.58,
+                "start_dist": 100.42,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.726,
+                "close_calls": 9,
+                "steps": 683,
+                "altitude_min": -3.51,
+                "altitude_max": 3.0,
+                "altitude_mean": 2.46,
+                "altitude_std": 1.417
+              },
+              {
+                "name": "north_tower",
+                "goal": [
+                  55.0,
+                  110.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.1,
+                  0.3
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.7,
+                "path_length": 0.29,
+                "start_dist": 122.98,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.822,
+                "close_calls": 0,
+                "steps": 13,
+                "altitude_min": -3.53,
+                "altitude_max": -0.35,
+                "altitude_mean": -2.16,
+                "altitude_std": 1.002
+              },
+              {
+                "name": "NW_tower",
+                "goal": [
+                  -60.0,
+                  115.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.2,
+                  0.3
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.75,
+                "path_length": 0.35,
+                "start_dist": 129.71,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.849,
+                "close_calls": 0,
+                "steps": 14,
+                "altitude_min": -3.61,
+                "altitude_max": -0.34,
+                "altitude_mean": -2.25,
+                "altitude_std": 1.032
+              },
+              {
+                "name": "on_north_bldg",
+                "goal": [
+                  0.0,
+                  29.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.2,
+                  0.3
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.98,
+                "path_length": 0.28,
+                "start_dist": 29.0,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.169,
+                "close_calls": 0,
+                "steps": 18,
+                "altitude_min": -3.58,
+                "altitude_max": -0.06,
+                "altitude_mean": -2.25,
+                "altitude_std": 1.091
+              },
+              {
+                "name": "return_home",
+                "goal": [
+                  0.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.0,
+                  0.0
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.0,
+                "path_length": 0.0,
+                "start_dist": 0.0,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 0,
+                "altitude_min": 0.73,
+                "altitude_max": 0.73,
+                "altitude_mean": 0.73,
+                "altitude_std": 0.0
+              }
+            ],
+            "run_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "label": "RL+AltSM",
+      "controller_type": "rl_alt",
+      "results": {
+        "n_runs": 1,
+        "stats": {
+          "success_rate": {
+            "mean": 25.0,
+            "std": 0.0,
+            "min": 25.0,
+            "max": 25.0,
+            "values": [
+              25.0
+            ]
+          },
+          "collision_rate_per_km": {
+            "mean": 24.62,
+            "std": 0.0,
+            "min": 24.62,
+            "max": 24.62,
+            "values": [
+              24.62
+            ]
+          },
+          "collision_rate_per_goal": {
+            "mean": 0.75,
+            "std": 0.0,
+            "min": 0.75,
+            "max": 0.75,
+            "values": [
+              0.75
+            ]
+          },
+          "avg_efficiency_pct": {
+            "mean": 104.3,
+            "std": 0.0,
+            "min": 104.3,
+            "max": 104.3,
+            "values": [
+              104.3
+            ]
+          },
+          "avg_time_to_goal_s": {
+            "mean": 21.2,
+            "std": 0.0,
+            "min": 21.2,
+            "max": 21.2,
+            "values": [
+              21.2
+            ]
+          },
+          "time_efficiency_mps": {
+            "mean": 1.848,
+            "std": 0.0,
+            "min": 1.848,
+            "max": 1.848,
+            "values": [
+              1.848
+            ]
+          },
+          "avg_min_obstacle_m": {
+            "mean": 2.413,
+            "std": 0.0,
+            "min": 2.413,
+            "max": 2.413,
+            "values": [
+              2.413
+            ]
+          },
+          "total_close_calls": {
+            "mean": 31.0,
+            "std": 0.0,
+            "min": 31.0,
+            "max": 31.0,
+            "values": [
+              31.0
+            ]
+          },
+          "recovery_score_pct": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "altitude_mean_m": {
+            "mean": 0.09,
+            "std": 0.0,
+            "min": 0.09,
+            "max": 0.09,
+            "values": [
+              0.09
+            ]
+          },
+          "altitude_min_m": {
+            "mean": -3.59,
+            "std": 0.0,
+            "min": -3.59,
+            "max": -3.59,
+            "values": [
+              -3.59
+            ]
+          },
+          "altitude_max_m": {
+            "mean": 6.97,
+            "std": 0.0,
+            "min": 6.97,
+            "max": 6.97,
+            "values": [
+              6.97
+            ]
+          },
+          "altitude_std_m": {
+            "mean": 0.873,
+            "std": 0.0,
+            "min": 0.873,
+            "max": 0.873,
+            "values": [
+              0.873
+            ]
+          },
+          "post_collision_reset_legs": {
+            "mean": 9.0,
+            "std": 0.0,
+            "min": 9.0,
+            "max": 9.0,
+            "values": [
+              9.0
+            ]
+          },
+          "successes": {
+            "mean": 3.0,
+            "std": 0.0,
+            "min": 3.0,
+            "max": 3.0,
+            "values": [
+              3.0
+            ]
+          },
+          "collisions": {
+            "mean": 9.0,
+            "std": 0.0,
+            "min": 9.0,
+            "max": 9.0,
+            "values": [
+              9.0
+            ]
+          },
+          "stucks": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "timeouts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "total_path_m": {
+            "mean": 365.6,
+            "std": 0.0,
+            "min": 365.6,
+            "max": 365.6,
+            "values": [
+              365.6
+            ]
+          },
+          "total_time_s": {
+            "mean": 200.7,
+            "std": 0.0,
+            "min": 200.7,
+            "max": 200.7,
+            "values": [
+              200.7
+            ]
+          }
+        },
+        "runs": [
+          {
+            "controller": "rl_alt",
+            "controller_label": "RL+AltSM",
+            "goals_total": 12,
+            "successes": 3,
+            "success_rate": 25.0,
+            "collisions": 9,
+            "collision_rate_per_km": 24.62,
+            "collision_rate_per_goal": 0.75,
+            "stucks": 0,
+            "timeouts": 0,
+            "total_path_m": 365.6,
+            "total_time_s": 200.7,
+            "avg_efficiency_pct": 104.3,
+            "avg_time_to_goal_s": 21.2,
+            "time_efficiency_mps": 1.848,
+            "post_collision_reset_legs": 9,
+            "avg_min_obstacle_m": 2.413,
+            "total_close_calls": 31,
+            "recovery_score_pct": 0.0,
+            "altitude_mean_m": 0.09,
+            "altitude_min_m": -3.59,
+            "altitude_max_m": 6.97,
+            "altitude_std_m": 0.873,
+            "legs": [
+              {
+                "name": "open_east",
+                "goal": [
+                  40.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  39.5,
+                  0.9
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 21.2,
+                "path_length": 38.37,
+                "start_dist": 40.0,
+                "post_collision_reset": false,
+                "efficiency": 104.3,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 358,
+                "altitude_min": 2.94,
+                "altitude_max": 3.09,
+                "altitude_mean": 2.99,
+                "altitude_std": 0.034
+              },
+              {
+                "name": "behind_north_bldg",
+                "goal": [
+                  0.0,
+                  55.0
+                ],
+                "start_pos": [
+                  39.8,
+                  0.8
+                ],
+                "end_pos": [
+                  1.4,
+                  51.8
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 34.59,
+                "path_length": 63.99,
+                "start_dist": 67.21,
+                "post_collision_reset": false,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.692,
+                "close_calls": 15,
+                "steps": 578,
+                "altitude_min": 2.94,
+                "altitude_max": 5.31,
+                "altitude_mean": 3.08,
+                "altitude_std": 0.369
+              },
+              {
+                "name": "west_open",
+                "goal": [
+                  -50.0,
+                  30.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.3,
+                  0.0
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.73,
+                "path_length": 0.29,
+                "start_dist": 58.31,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.086,
+                "close_calls": 0,
+                "steps": 14,
+                "altitude_min": -3.59,
+                "altitude_max": -0.34,
+                "altitude_mean": -2.23,
+                "altitude_std": 1.021
+              },
+              {
+                "name": "near_bldg4_NW",
+                "goal": [
+                  -90.0,
+                  65.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.3,
+                  0.1
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.74,
+                "path_length": 0.35,
+                "start_dist": 111.02,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.602,
+                "close_calls": 0,
+                "steps": 14,
+                "altitude_min": -3.59,
+                "altitude_max": -0.32,
+                "altitude_mean": -2.23,
+                "altitude_std": 1.025
+              },
+              {
+                "name": "SE_wall_compound",
+                "goal": [
+                  75.0,
+                  -60.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.4,
+                  -0.2
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.84,
+                "path_length": 0.45,
+                "start_dist": 96.05,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.631,
+                "close_calls": 0,
+                "steps": 17,
+                "altitude_min": -3.55,
+                "altitude_max": -0.1,
+                "altitude_mean": -2.13,
+                "altitude_std": 1.061
+              },
+              {
+                "name": "south_cluster",
+                "goal": [
+                  -10.0,
+                  -95.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -9.1,
+                  -94.6
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 50.43,
+                "path_length": 94.04,
+                "start_dist": 95.52,
+                "post_collision_reset": true,
+                "efficiency": 101.6,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 889,
+                "altitude_min": -2.41,
+                "altitude_max": 3.0,
+                "altitude_mean": 2.53,
+                "altitude_std": 1.222
+              },
+              {
+                "name": "apartment_ESE",
+                "goal": [
+                  90.0,
+                  -70.0
+                ],
+                "start_pos": [
+                  -9.2,
+                  -94.9
+                ],
+                "end_pos": [
+                  77.2,
+                  -72.7
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 47.87,
+                "path_length": 89.23,
+                "start_dist": 102.26,
+                "post_collision_reset": false,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.816,
+                "close_calls": 8,
+                "steps": 839,
+                "altitude_min": 2.99,
+                "altitude_max": 6.97,
+                "altitude_mean": 3.67,
+                "altitude_std": 1.262
+              },
+              {
+                "name": "building9_NE",
+                "goal": [
+                  97.0,
+                  26.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  75.6,
+                  18.2
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 41.66,
+                "path_length": 77.69,
+                "start_dist": 100.42,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.75,
+                "close_calls": 8,
+                "steps": 653,
+                "altitude_min": -2.54,
+                "altitude_max": 3.2,
+                "altitude_mean": 2.47,
+                "altitude_std": 1.312
+              },
+              {
+                "name": "north_tower",
+                "goal": [
+                  55.0,
+                  110.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.1,
+                  0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.74,
+                "path_length": 0.35,
+                "start_dist": 122.98,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.958,
+                "close_calls": 0,
+                "steps": 14,
+                "altitude_min": -3.57,
+                "altitude_max": -0.32,
+                "altitude_mean": -2.18,
+                "altitude_std": 1.029
+              },
+              {
+                "name": "NW_tower",
+                "goal": [
+                  -60.0,
+                  115.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.3,
+                  0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.81,
+                "path_length": 0.44,
+                "start_dist": 129.71,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.345,
+                "close_calls": 0,
+                "steps": 15,
+                "altitude_min": -3.58,
+                "altitude_max": -0.28,
+                "altitude_mean": -2.21,
+                "altitude_std": 1.044
+              },
+              {
+                "name": "on_north_bldg",
+                "goal": [
+                  0.0,
+                  29.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.3,
+                  0.7
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 1.04,
+                "path_length": 0.35,
+                "start_dist": 29.0,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.071,
+                "close_calls": 0,
+                "steps": 19,
+                "altitude_min": -3.55,
+                "altitude_max": -0.02,
+                "altitude_mean": -2.27,
+                "altitude_std": 1.092
+              },
+              {
+                "name": "return_home",
+                "goal": [
+                  0.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.0,
+                  0.0
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.0,
+                "path_length": 0.0,
+                "start_dist": 0.0,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 0,
+                "altitude_min": -0.39,
+                "altitude_max": -0.39,
+                "altitude_mean": -0.39,
+                "altitude_std": 0.0
+              }
+            ],
+            "run_index": 1
+          }
+        ]
+      }
+    },
+    {
+      "label": "PControl+AltSM",
+      "controller_type": "p_control_alt",
+      "results": {
+        "n_runs": 1,
+        "stats": {
+          "success_rate": {
+            "mean": 16.7,
+            "std": 0.0,
+            "min": 16.7,
+            "max": 16.7,
+            "values": [
+              16.7
+            ]
+          },
+          "collision_rate_per_km": {
+            "mean": 54.711,
+            "std": 0.0,
+            "min": 54.711,
+            "max": 54.711,
+            "values": [
+              54.711
+            ]
+          },
+          "collision_rate_per_goal": {
+            "mean": 0.833,
+            "std": 0.0,
+            "min": 0.833,
+            "max": 0.833,
+            "values": [
+              0.833
+            ]
+          },
+          "avg_efficiency_pct": {
+            "mean": 105.4,
+            "std": 0.0,
+            "min": 105.4,
+            "max": 105.4,
+            "values": [
+              105.4
+            ]
+          },
+          "avg_time_to_goal_s": {
+            "mean": 20.8,
+            "std": 0.0,
+            "min": 20.8,
+            "max": 20.8,
+            "values": [
+              20.8
+            ]
+          },
+          "time_efficiency_mps": {
+            "mean": 1.874,
+            "std": 0.0,
+            "min": 1.874,
+            "max": 1.874,
+            "values": [
+              1.874
+            ]
+          },
+          "avg_min_obstacle_m": {
+            "mean": 2.517,
+            "std": 0.0,
+            "min": 2.517,
+            "max": 2.517,
+            "values": [
+              2.517
+            ]
+          },
+          "total_close_calls": {
+            "mean": 27.0,
+            "std": 0.0,
+            "min": 27.0,
+            "max": 27.0,
+            "values": [
+              27.0
+            ]
+          },
+          "recovery_score_pct": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "altitude_mean_m": {
+            "mean": -0.79,
+            "std": 0.0,
+            "min": -0.79,
+            "max": -0.79,
+            "values": [
+              -0.79
+            ]
+          },
+          "altitude_min_m": {
+            "mean": -3.6,
+            "std": 0.0,
+            "min": -3.6,
+            "max": -3.6,
+            "values": [
+              -3.6
+            ]
+          },
+          "altitude_max_m": {
+            "mean": 4.79,
+            "std": 0.0,
+            "min": 4.79,
+            "max": 4.79,
+            "values": [
+              4.79
+            ]
+          },
+          "altitude_std_m": {
+            "mean": 0.856,
+            "std": 0.0,
+            "min": 0.856,
+            "max": 0.856,
+            "values": [
+              0.856
+            ]
+          },
+          "post_collision_reset_legs": {
+            "mean": 10.0,
+            "std": 0.0,
+            "min": 10.0,
+            "max": 10.0,
+            "values": [
+              10.0
+            ]
+          },
+          "successes": {
+            "mean": 2.0,
+            "std": 0.0,
+            "min": 2.0,
+            "max": 2.0,
+            "values": [
+              2.0
+            ]
+          },
+          "collisions": {
+            "mean": 10.0,
+            "std": 0.0,
+            "min": 10.0,
+            "max": 10.0,
+            "values": [
+              10.0
+            ]
+          },
+          "stucks": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "timeouts": {
+            "mean": 0.0,
+            "std": 0.0,
+            "min": 0.0,
+            "max": 0.0,
+            "values": [
+              0.0
+            ]
+          },
+          "total_path_m": {
+            "mean": 182.8,
+            "std": 0.0,
+            "min": 182.8,
+            "max": 182.8,
+            "values": [
+              182.8
+            ]
+          },
+          "total_time_s": {
+            "mean": 100.7,
+            "std": 0.0,
+            "min": 100.7,
+            "max": 100.7,
+            "values": [
+              100.7
+            ]
+          }
+        },
+        "runs": [
+          {
+            "controller": "p_control_alt",
+            "controller_label": "PControl+AltSM",
+            "goals_total": 12,
+            "successes": 2,
+            "success_rate": 16.7,
+            "collisions": 10,
+            "collision_rate_per_km": 54.711,
+            "collision_rate_per_goal": 0.833,
+            "stucks": 0,
+            "timeouts": 0,
+            "total_path_m": 182.8,
+            "total_time_s": 100.7,
+            "avg_efficiency_pct": 105.4,
+            "avg_time_to_goal_s": 20.8,
+            "time_efficiency_mps": 1.874,
+            "post_collision_reset_legs": 10,
+            "avg_min_obstacle_m": 2.517,
+            "total_close_calls": 27,
+            "recovery_score_pct": 0.0,
+            "altitude_mean_m": -0.79,
+            "altitude_min_m": -3.6,
+            "altitude_max_m": 4.79,
+            "altitude_std_m": 0.856,
+            "legs": [
+              {
+                "name": "open_east",
+                "goal": [
+                  40.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  38.6,
+                  -0.0
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 20.78,
+                "path_length": 37.96,
+                "start_dist": 40.0,
+                "post_collision_reset": false,
+                "efficiency": 105.4,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 405,
+                "altitude_min": 2.99,
+                "altitude_max": 3.1,
+                "altitude_mean": 3.01,
+                "altitude_std": 0.024
+              },
+              {
+                "name": "behind_north_bldg",
+                "goal": [
+                  0.0,
+                  55.0
+                ],
+                "start_pos": [
+                  38.7,
+                  -0.0
+                ],
+                "end_pos": [
+                  1.4,
+                  53.0
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 34.02,
+                "path_length": 64.76,
+                "start_dist": 67.25,
+                "post_collision_reset": false,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.685,
+                "close_calls": 18,
+                "steps": 653,
+                "altitude_min": 2.99,
+                "altitude_max": 4.79,
+                "altitude_mean": 3.09,
+                "altitude_std": 0.35
+              },
+              {
+                "name": "west_open",
+                "goal": [
+                  -50.0,
+                  30.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.4,
+                  0.2
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.79,
+                "path_length": 0.42,
+                "start_dist": 58.31,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.6,
+                "close_calls": 0,
+                "steps": 17,
+                "altitude_min": -3.51,
+                "altitude_max": -0.26,
+                "altitude_mean": -2.18,
+                "altitude_std": 1.015
+              },
+              {
+                "name": "near_bldg4_NW",
+                "goal": [
+                  -90.0,
+                  65.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.4,
+                  0.3
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.77,
+                "path_length": 0.41,
+                "start_dist": 111.02,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.445,
+                "close_calls": 0,
+                "steps": 17,
+                "altitude_min": -3.53,
+                "altitude_max": -0.28,
+                "altitude_mean": -2.18,
+                "altitude_std": 1.022
+              },
+              {
+                "name": "SE_wall_compound",
+                "goal": [
+                  75.0,
+                  -60.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.3,
+                  -0.2
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.75,
+                "path_length": 0.38,
+                "start_dist": 96.05,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 3.098,
+                "close_calls": 0,
+                "steps": 16,
+                "altitude_min": -3.58,
+                "altitude_max": -0.34,
+                "altitude_mean": -2.19,
+                "altitude_std": 1.009
+              },
+              {
+                "name": "south_cluster",
+                "goal": [
+                  -10.0,
+                  -95.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.0,
+                  -0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.79,
+                "path_length": 0.43,
+                "start_dist": 95.52,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.348,
+                "close_calls": 0,
+                "steps": 17,
+                "altitude_min": -3.57,
+                "altitude_max": -0.28,
+                "altitude_mean": -2.22,
+                "altitude_std": 1.031
+              },
+              {
+                "name": "apartment_ESE",
+                "goal": [
+                  90.0,
+                  -70.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.5,
+                  -0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.95,
+                "path_length": 0.6,
+                "start_dist": 114.02,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.222,
+                "close_calls": 0,
+                "steps": 20,
+                "altitude_min": -3.6,
+                "altitude_max": -0.01,
+                "altitude_mean": -2.18,
+                "altitude_std": 1.087
+              },
+              {
+                "name": "building9_NE",
+                "goal": [
+                  97.0,
+                  26.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  74.2,
+                  19.6
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 39.5,
+                "path_length": 76.55,
+                "start_dist": 100.42,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 0.782,
+                "close_calls": 9,
+                "steps": 763,
+                "altitude_min": -3.43,
+                "altitude_max": 3.41,
+                "altitude_mean": 2.2,
+                "altitude_std": 1.678
+              },
+              {
+                "name": "north_tower",
+                "goal": [
+                  55.0,
+                  110.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.2,
+                  0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.8,
+                "path_length": 0.44,
+                "start_dist": 122.98,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.319,
+                "close_calls": 0,
+                "steps": 17,
+                "altitude_min": -3.59,
+                "altitude_max": -0.26,
+                "altitude_mean": -2.22,
+                "altitude_std": 1.026
+              },
+              {
+                "name": "NW_tower",
+                "goal": [
+                  -60.0,
+                  115.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.2,
+                  0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.8,
+                "path_length": 0.43,
+                "start_dist": 129.71,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 2.433,
+                "close_calls": 0,
+                "steps": 17,
+                "altitude_min": -3.54,
+                "altitude_max": -0.24,
+                "altitude_mean": -2.17,
+                "altitude_std": 1.025
+              },
+              {
+                "name": "on_north_bldg",
+                "goal": [
+                  0.0,
+                  29.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  -0.0,
+                  0.4
+                ],
+                "success": false,
+                "collision": true,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.77,
+                "path_length": 0.4,
+                "start_dist": 29.0,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 3.269,
+                "close_calls": 0,
+                "steps": 16,
+                "altitude_min": -3.55,
+                "altitude_max": -0.3,
+                "altitude_mean": -2.17,
+                "altitude_std": 1.009
+              },
+              {
+                "name": "return_home",
+                "goal": [
+                  0.0,
+                  0.0
+                ],
+                "start_pos": [
+                  0.0,
+                  0.0
+                ],
+                "end_pos": [
+                  0.0,
+                  0.0
+                ],
+                "success": true,
+                "collision": false,
+                "stuck": false,
+                "timeout": false,
+                "time": 0.0,
+                "path_length": 0.0,
+                "start_dist": 0.0,
+                "post_collision_reset": true,
+                "efficiency": 0.0,
+                "min_obstacle_dist": 4.0,
+                "close_calls": 0,
+                "steps": 0,
+                "altitude_min": -0.22,
+                "altitude_max": -0.22,
+                "altitude_mean": -0.22,
+                "altitude_std": 0.0
+              }
+            ],
+            "run_index": 1
+          }
+        ]
+      }
+    }
+  ]
+}
