@@ -6,6 +6,7 @@ import 'core/auth/auth_controller.dart';
 import 'core/notifications/notification_center.dart';
 import 'core/router/app_router.dart';
 import 'ui/theme.dart';
+import 'ui/widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,7 @@ class DroneCommandCenterApp extends ConsumerWidget {
         title: 'AIRSIM Ground Control',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.dark,
-        home: const _BootSplash(),
+        home: const SplashScreen(),
       );
     }
 
@@ -50,38 +51,4 @@ class DroneCommandCenterApp extends ConsumerWidget {
   }
 }
 
-class _BootSplash extends StatelessWidget {
-  const _BootSplash();
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bg,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            SizedBox(
-              width: 28,
-              height: 28,
-              child: CircularProgressIndicator(
-                strokeWidth: 1.4,
-                valueColor: AlwaysStoppedAnimation(AppColors.accent),
-              ),
-            ),
-            SizedBox(height: 18),
-            Text(
-              'AIRSIM  //  INITIALIZING',
-              style: TextStyle(
-                color: AppColors.textDim,
-                fontSize: 10,
-                letterSpacing: 2.4,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
