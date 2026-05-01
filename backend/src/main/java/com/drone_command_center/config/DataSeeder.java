@@ -2,11 +2,15 @@ package com.drone_command_center.config;
 
 import com.drone_command_center.Entity.Drone;
 import com.drone_command_center.Entity.Mission;
+import com.drone_command_center.Entity.Sensor;
 import com.drone_command_center.Entity.User;
+import com.drone_command_center.Entity.Waypoint;
 import com.drone_command_center.Entity.enums.*;
 import com.drone_command_center.Repository.DroneRepository;
 import com.drone_command_center.Repository.MissionRepository;
+import com.drone_command_center.Repository.SensorRepository;
 import com.drone_command_center.Repository.UserRepository;
+import com.drone_command_center.Repository.WaypointRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +21,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Seeds the demo accounts, sample drone, and sample missions on startup.
@@ -35,6 +40,8 @@ public class DataSeeder implements CommandLineRunner {
     private final UserRepository userRepository;
     private final DroneRepository droneRepository;
     private final MissionRepository missionRepository;
+    private final WaypointRepository waypointRepository;
+    private final SensorRepository sensorRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Value("${app.seed.enabled:true}")
@@ -68,9 +75,64 @@ public class DataSeeder implements CommandLineRunner {
         User operator = seedOperatorUser();
         seedBridgeUser();
         Drone drone = seedSampleDrones();
+        seedSensors(drone);
         seedSampleMissions(operator, drone);
 
         log.info("Data seeding completed.");
+    }
+
+    /**
+     * Seeds the four-sensor stack matched to the modelled DJI M300 platform.
+     * The {@code SensorService} pairs these rows with live telemetry to
+     * report real readings — none of the values below are dummy data, they
+     * describe the physical sensor specs.
+     */
+    private void seedSensors(Drone drone) {
+        if (drone == null) {
+            log.warn("No drone available \u2014 skipping sensor seeding.");
+            return;
+        }
+        if (sensorRepository.findByDrone(drone).size() > 0) {
+            log.info("Sensors already exist for drone {}, skipping...", drone.getName());
+            return;
+        }
+
+        List<Sensor> sensors = List.of(
+                Sensor.builder()
+                        .type(SensorType.GPS)
+                        .model("u-blox NEO-M9N")
+                        .rangeMeters(0.0)        // not range-limited
+                        .frequencyHz(10.0)
+                        .enabled(true)
+                        .drone(drone)
+                        .build(),
+                Sensor.builder()
+                        .type(SensorType.IMU)
+                        .model("Bosch BMI088")
+                        .rangeMeters(0.0)        // inertial, no spatial range
+                        .frequencyHz(200.0)
+                        .enabled(true)
+                        .drone(drone)
+                        .build(),
+                Sensor.builder()
+                        .type(SensorType.LIDAR)
+                        .model("Livox Mid-360")
+                        .rangeMeters(40.0)
+                        .frequencyHz(20.0)
+                        .enabled(true)
+                        .drone(drone)
+                        .build(),
+                Sensor.builder()
+                        .type(SensorType.CAMERA)
+                        .model("Zenmuse H20T (FPV)")
+                        .rangeMeters(0.0)
+                        .frequencyHz(30.0)
+                        .enabled(true)
+                        .drone(drone)
+                        .build()
+        );
+        sensorRepository.saveAll(sensors);
+        log.info("Created {} sensors for drone '{}'.", sensors.size(), drone.getName());
     }
 
     /**
@@ -175,7 +237,7 @@ public class DataSeeder implements CommandLineRunner {
             return;
         }
 
-        Mission inspection = Mission.builder()
+        Mission inspection = missionRepository.save(Mission.builder()
                 .name("Building Inspection Demo")
                 .description("Sample autonomous inspection sweep around a building footprint.")
                 .missionType(MissionType.INSPECTION)
@@ -188,9 +250,9 @@ public class DataSeeder implements CommandLineRunner {
                 .goalNedY(0.0)
                 .baseAltitude(15.0)
                 .waypoints(new ArrayList<>())
-                .build();
+                .build());
 
-        Mission patrol = Mission.builder()
+        Mission patrol = missionRepository.save(Mission.builder()
                 .name("Perimeter Patrol Demo")
                 .description("Sample autonomous perimeter patrol used as the live demo mission.")
                 .missionType(MissionType.NAVIGATION)
@@ -203,10 +265,71 @@ public class DataSeeder implements CommandLineRunner {
                 .goalNedY(20.0)
                 .baseAltitude(12.0)
                 .waypoints(new ArrayList<>())
-                .build();
+                .build());
 
-        missionRepository.save(inspection);
-        missionRepository.save(patrol);
-        log.info("Created 2 sample missions: '{}' and '{}'", inspection.getName(), patrol.getName());
+        seedWaypointsForInspection(inspection, drone);
+        seedWaypointsForPatrol(patrol, drone);
+
+        log.info("Created 2 sample missions with waypoints: '{}' and '{}'",
+                inspection.getName(), patrol.getName());
+    }
+
+    /** Four-corner inspection orbit anchored on the drone's home position. */
+    private void seedWaypointsForInspection(Mission mission, Drone drone) {
+        double lat = drone.getHomeLatitude() != null ? drone.getHomeLatitude() : drone.getLatitude();
+        double lon = drone.getHomeLongitude() != null ? drone.getHomeLongitude() : drone.getLongitude();
+        // ~0.0001\u00b0 \u2248 11 m at the equator \u2014 good order of magnitude for an inspection orbit.
+        double[][] corners = {
+                {lat + 0.0001, lon, 15.0, 0.0},
+                {lat + 0.0001, lon + 0.0001, 15.0, 90.0},
+                {lat,          lon + 0.0001, 15.0, 180.0},
+                {lat,          lon,          15.0, 270.0}
+        };
+        WaypointAction[] actions = {
+                WaypointAction.SCAN_AREA, WaypointAction.TAKE_PHOTO,
+                WaypointAction.SCAN_AREA, WaypointAction.RETURN_HOME
+        };
+        for (int i = 0; i < corners.length; i++) {
+            waypointRepository.save(Waypoint.builder()
+                    .sequenceOrder(i + 1)
+                    .latitude(corners[i][0])
+                    .longitude(corners[i][1])
+                    .altitude(corners[i][2])
+                    .heading(corners[i][3])
+                    .speed(2.0)
+                    .hoverDuration(i == 0 || i == 2 ? 5 : 0)
+                    .action(actions[i])
+                    .autoGenerated(false)
+                    .mission(mission)
+                    .build());
+        }
+    }
+
+    /** Five-leg patrol path expressed in NavRL NED coordinates. */
+    private void seedWaypointsForPatrol(Mission mission, Drone drone) {
+        double lat = drone.getHomeLatitude() != null ? drone.getHomeLatitude() : drone.getLatitude();
+        double lon = drone.getHomeLongitude() != null ? drone.getHomeLongitude() : drone.getLongitude();
+        double[][] legs = {
+                {15.0,  0.0},
+                {30.0, 10.0},
+                {45.0, 20.0},
+                {60.0, 20.0}
+        };
+        for (int i = 0; i < legs.length; i++) {
+            waypointRepository.save(Waypoint.builder()
+                    .sequenceOrder(i + 1)
+                    .latitude(lat)
+                    .longitude(lon)
+                    .altitude(12.0)
+                    .heading(0.0)
+                    .speed(2.0)
+                    .hoverDuration(0)
+                    .action(WaypointAction.FLY_THROUGH)
+                    .nedX(legs[i][0])
+                    .nedY(legs[i][1])
+                    .autoGenerated(true)
+                    .mission(mission)
+                    .build());
+        }
     }
 }

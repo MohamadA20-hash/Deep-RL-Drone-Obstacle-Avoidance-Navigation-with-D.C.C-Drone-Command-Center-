@@ -9,6 +9,7 @@ import '../../core/state/fleet_providers.dart';
 import '../../ui/theme.dart';
 import '../../ui/widgets/app_shell.dart';
 import '../../ui/widgets/panel_card.dart';
+import '../../ui/widgets/sensor_suite_card.dart';
 
 /// SYSTEMS view.
 ///
@@ -119,6 +120,8 @@ class _SystemsPageState extends ConsumerState<SystemsPage>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _IntroBanner(live: live),
+            const SizedBox(height: 12),
+            const SensorSuiteCard(),
             const SizedBox(height: 12),
             // Top row: compute + flight controller
             LayoutBuilder(builder: (ctx, c) {
