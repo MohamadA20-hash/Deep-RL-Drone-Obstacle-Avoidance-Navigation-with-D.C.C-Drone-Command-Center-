@@ -1,0 +1,60 @@
+# Drone Command Center — local demo stack
+# Brings up PostgreSQL + Spring Boot backend with one command:
+#   docker compose up --build
+#
+# The Flutter frontend and the AirSim Python bridge are NOT containerised
+# (they need GPU / AirSim simulator and are run separately on the host).
+
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: dcc-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-drone_command_center}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-123}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - dcc_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres} -d ${DB_NAME:-drone_command_center}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dcc-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # DB — override the hardcoded localhost in application.properties
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${DB_NAME:-drone_command_center}
+      DB_USERNAME: ${DB_USERNAME:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-123}
+
+      # Auth
+      JWT_SECRET: ${JWT_SECRET:-Qm9iVGhlRHJvbmVDb21tYW5kQ2VudGVyU2VjdXJlS2V5MTIzNDU2Nzg5MDE=}
+
+      # AirSim bridge auth (used when bridge connects from host)
+      BRIDGE_AUTH_USER: ${BRIDGE_AUTH_USER:-navrl_bridge}
+      BRIDGE_AUTH_PASS: ${BRIDGE_AUTH_PASS:-NavRL@2026!}
+
+      # Disable backend-managed auto-start of the bridge in container mode —
+      # the bridge runs on the host because it needs the AirSim simulator.
+      APP_AIRSIM_BRIDGE_AUTO_START: "false"
+
+      JAVA_OPTS: "-Xms256m -Xmx768m"
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+
+volumes:
+  dcc_pgdata:
+    name: dcc_pgdata

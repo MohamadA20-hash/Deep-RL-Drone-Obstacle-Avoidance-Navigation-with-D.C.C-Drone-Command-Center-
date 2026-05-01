@@ -6,6 +6,9 @@ import '../../core/state/fleet_providers.dart';
 import '../theme.dart';
 import 'panel_card.dart';
 
+/// Application version shown in the footer. Bump on each demo release.
+const String kAppVersion = 'v1.0.0-demo';
+
 class FooterBar extends ConsumerStatefulWidget {
   const FooterBar({super.key});
 
@@ -85,6 +88,8 @@ class _FooterBarState extends ConsumerState<FooterBar> {
                     _FootItem(text: bridgeLabel, state: airsimState),
                     const _FootItem(
                         text: 'CLASS\u00a0/\u00a0FOUO', state: _S.warn),
+                    const _FootItem(
+                        text: 'BUILD\u00a0/\u00a0$kAppVersion', state: _S.ok),
                   ],
                 ),
               ),

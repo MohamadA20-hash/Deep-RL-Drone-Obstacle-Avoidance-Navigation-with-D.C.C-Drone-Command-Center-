@@ -1,9 +1,11 @@
 package com.drone_command_center.config;
 
 import com.drone_command_center.Entity.Drone;
+import com.drone_command_center.Entity.Mission;
 import com.drone_command_center.Entity.User;
 import com.drone_command_center.Entity.enums.*;
 import com.drone_command_center.Repository.DroneRepository;
+import com.drone_command_center.Repository.MissionRepository;
 import com.drone_command_center.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +16,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
+import java.util.ArrayList;
 
 /**
- * Data seeder for initializing default data.
- * Only runs in development profile or when explicitly enabled.
+ * Seeds the demo accounts, sample drone, and sample missions on startup.
+ *
+ * <p>Idempotent: every seed step checks first and skips if the data already
+ * exists. Controlled by {@code app.seed.enabled} (default {@code true} so a
+ * fresh DB comes up demo-ready out of the box). Set
+ * {@code APP_SEED_ENABLED=false} for production.
  */
 @Slf4j
 @Component
@@ -27,10 +34,26 @@ public class DataSeeder implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final DroneRepository droneRepository;
+    private final MissionRepository missionRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Value("${app.seed.enabled:false}")
+    @Value("${app.seed.enabled:true}")
     private boolean seedEnabled;
+
+    @Value("${app.seed.operator.username:operator}")
+    private String operatorUsername;
+
+    @Value("${app.seed.operator.password:Operator@2026!}")
+    private String operatorPassword;
+
+    @Value("${app.seed.operator.email:operator@dronecommandcenter.com}")
+    private String operatorEmail;
+
+    @Value("${app.airsim.bridge.auth-user:navrl_bridge}")
+    private String bridgeUsername;
+
+    @Value("${app.airsim.bridge.auth-pass:NavRL@2026!}")
+    private String bridgePassword;
 
     @Override
     public void run(String... args) {
@@ -42,9 +65,50 @@ public class DataSeeder implements CommandLineRunner {
         log.info("Starting data seeding...");
 
         seedResearcherUser();
-        seedSampleDrones();
+        User operator = seedOperatorUser();
+        seedBridgeUser();
+        Drone drone = seedSampleDrones();
+        seedSampleMissions(operator, drone);
 
         log.info("Data seeding completed.");
+    }
+
+    /**
+     * Seeds a default operator account so panelists can log in immediately.
+     */
+    private User seedOperatorUser() {
+        return userRepository.findByUsername(operatorUsername).orElseGet(() -> {
+            User operator = User.builder()
+                    .username(operatorUsername)
+                    .password(passwordEncoder.encode(operatorPassword))
+                    .email(operatorEmail)
+                    .enabled(true)
+                    .build();
+            User saved = userRepository.save(operator);
+            log.info("Created demo operator user: {} (password: {})", operatorUsername, operatorPassword);
+            return saved;
+        });
+    }
+
+    /**
+     * Seeds the bridge service account using the same credentials the
+     * AirSim Python bridge will read from {@code BRIDGE_AUTH_USER/PASS}.
+     * Without this, the bridge cannot authenticate on first startup.
+     */
+    private void seedBridgeUser() {
+        if (userRepository.findByUsername(bridgeUsername).isPresent()) {
+            log.info("Bridge user '{}' already exists, skipping...", bridgeUsername);
+            return;
+        }
+
+        User bridge = User.builder()
+                .username(bridgeUsername)
+                .password(passwordEncoder.encode(bridgePassword))
+                .email(bridgeUsername + "@bridge.local")
+                .enabled(true)
+                .build();
+        userRepository.save(bridge);
+        log.info("Created AirSim bridge service user: {}", bridgeUsername);
     }
 
     private void seedResearcherUser() {
@@ -65,10 +129,10 @@ public class DataSeeder implements CommandLineRunner {
         log.info("Created researcher user: {}", researcherUsername);
     }
 
-    private void seedSampleDrones() {
+    private Drone seedSampleDrones() {
         if (droneRepository.count() > 0) {
             log.info("Drones already exist, skipping drone seeding...");
-            return;
+            return droneRepository.findAll().stream().findFirst().orElse(null);
         }
 
         // Seed a single sample drone to match the default AirSim deployment model.
@@ -93,7 +157,56 @@ public class DataSeeder implements CommandLineRunner {
                 .registeredAt(Instant.now())
                 .build();
 
-        droneRepository.save(drone);
-        log.info("Created 1 sample control drone");
+        Drone saved = droneRepository.save(drone);
+        log.info("Created 1 sample control drone: {}", saved.getName());
+        return saved;
+    }
+
+    /**
+     * Seeds 2 sample missions so the dashboard isn't empty on first launch.
+     */
+    private void seedSampleMissions(User operator, Drone drone) {
+        if (operator == null) {
+            log.warn("No operator user available \u2014 skipping sample mission seeding.");
+            return;
+        }
+        if (missionRepository.count() > 0) {
+            log.info("Missions already exist, skipping mission seeding...");
+            return;
+        }
+
+        Mission inspection = Mission.builder()
+                .name("Building Inspection Demo")
+                .description("Sample autonomous inspection sweep around a building footprint.")
+                .missionType(MissionType.INSPECTION)
+                .status(MissionStatus.CREATED)
+                .estimatedDurationMinutes(8)
+                .createdBy(operator)
+                .assignedDrone(drone)
+                .createdAt(Instant.now())
+                .goalNedX(40.0)
+                .goalNedY(0.0)
+                .baseAltitude(15.0)
+                .waypoints(new ArrayList<>())
+                .build();
+
+        Mission patrol = Mission.builder()
+                .name("Perimeter Patrol Demo")
+                .description("Sample autonomous perimeter patrol used as the live demo mission.")
+                .missionType(MissionType.NAVIGATION)
+                .status(MissionStatus.CREATED)
+                .estimatedDurationMinutes(5)
+                .createdBy(operator)
+                .assignedDrone(drone)
+                .createdAt(Instant.now())
+                .goalNedX(60.0)
+                .goalNedY(20.0)
+                .baseAltitude(12.0)
+                .waypoints(new ArrayList<>())
+                .build();
+
+        missionRepository.save(inspection);
+        missionRepository.save(patrol);
+        log.info("Created 2 sample missions: '{}' and '{}'", inspection.getName(), patrol.getName());
     }
 }

@@ -202,14 +202,26 @@ class TelemetryServiceTest {
         }
 
         @Test
-        @DisplayName("Should throw when drone not found")
-        void shouldThrowWhenDroneNotFound() {
+        @DisplayName("Should auto-register a stub drone when telemetry arrives for an unknown drone ID")
+        void shouldAutoRegisterUnknownBridgeDrone() {
             TelemetryCreateRequest request = buildRequest(85.0, 50.0, 0.0, 0.0, 0.0, 10.0);
 
+            // Unknown drone -> repository returns empty, service should auto-register a stub.
             when(droneRepository.findById(droneId)).thenReturn(Optional.empty());
+            // Stub drone is saved twice: once on registration, once on state update.
+            when(droneRepository.save(any(Drone.class))).thenAnswer(inv -> inv.getArgument(0));
+            when(telemetryRepository.save(any(Telemetry.class))).thenAnswer(inv -> {
+                Telemetry t = inv.getArgument(0);
+                t.setId(UUID.randomUUID());
+                t.setTimestamp(Instant.now());
+                return t;
+            });
 
-            assertThatThrownBy(() -> telemetryService.ingestTelemetry(request))
-                    .isInstanceOf(ResourceNotFoundException.class);
+            TelemetryDTO dto = telemetryService.ingestTelemetry(request);
+
+            assertThat(dto).isNotNull();
+            // Drone was persisted at least once via the auto-registration path.
+            verify(droneRepository, atLeastOnce()).save(any(Drone.class));
         }
 
         @Test
