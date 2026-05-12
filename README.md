@@ -225,6 +225,23 @@ cd frontend; flutter test
 
 ---
 
+## Citation and Reference
+
+@ARTICLE{NavRL,
+  author={Xu, Zhefan and Han, Xinming and Shen, Haoyu and Jin, Hanyu and Shimada, Kenji},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={NavRL: Learning Safe Flight in Dynamic Environments}, 
+  year={2025},
+  volume={10},
+  number={4},
+  pages={3668-3675},
+  keywords={Navigation;Robots;Collision avoidance;Training;Safety;Vehicle dynamics;Heuristic algorithms;Detectors;Autonomous aerial vehicles;Learning systems;Aerial systems: Perception and autonomy;reinforcement learning;collision avoidance},
+  doi={10.1109/LRA.2025.3546069}}
+
+
+  ## Acknowledgement
+We acknowledge the authors of the NavRL framework, Z. Xu, X. Han, H. Shen, H. Jin, andK. Shimada at Carnegie Mellon University, whose published PPO-based navigation policy and LiDAR-based velocity-obstacle safety shield form the foundation of the AI layer evaluated in this work. Microsoft Research is acknowledged for the AirSim simulator and the Unreal Engine 4 City environment used for evaluation
+
 ## License
 
 Capstone project — academic use.
