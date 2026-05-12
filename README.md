@@ -242,6 +242,3 @@ cd frontend; flutter test
   ## Acknowledgement
 We acknowledge the authors of the NavRL framework, Z. Xu, X. Han, H. Shen, H. Jin, andK. Shimada at Carnegie Mellon University, whose published PPO-based navigation policy and LiDAR-based velocity-obstacle safety shield form the foundation of the AI layer evaluated in this work. Microsoft Research is acknowledged for the AirSim simulator and the Unreal Engine 4 City environment used for evaluation
 
-## License
-
-Capstone project — academic use.
