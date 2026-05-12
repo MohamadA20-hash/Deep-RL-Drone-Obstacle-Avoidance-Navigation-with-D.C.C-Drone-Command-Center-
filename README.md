@@ -1,0 +1,2 @@
+# Deep-RL-Drone-Obstacle-Avoidance-Navigation-with-D.C.C-Drone-Command-Center-
+This project integrates a Deep Reinforcement Learning (DRL) navigation layer, based on the NavRL framework, with a full-stack Drone Command Center (DCC). It features a PPO-based obstacle avoidance system and a LiDAR safety shield, managed via a Spring Boot backend and Flutter mobile frontend for real-time mission control.
