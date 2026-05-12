@@ -1,12 +1,10 @@
 # Drone Command Center
 
-[![ci](https://github.com/MohamadA12-programmer/drone_command_center/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MohamadA12-programmer/drone_command_center/actions/workflows/ci.yml)
-
-A full-stack capstone system for **autonomous drone command and control**: a Spring Boot REST/WebSocket backend, a Flutter desktop & web dashboard, and a Python NavRL + AirSim flight bridge that flies a virtual quadrotor through cluttered urban scenes in response to operator commands.
+A full-stack capstone system for **autonomous drone command and control**: a Spring Boot REST/WebSocket backend, a Flutter desktop / web / Android dashboard, and a Python NavRL + AirSim flight bridge that flies a virtual quadrotor through cluttered urban scenes in response to operator commands.
 
 > **Stack at a glance**
 > Backend: Spring Boot 4.0.2 · Java 17 · PostgreSQL 16 · JWT auth · WebSocket telemetry
-> Frontend: Flutter 3 (Windows desktop + Web) · Dio · Provider
+> Frontend: Flutter 3 (Windows desktop, Web, Android APK) · Dio · Riverpod
 > Autonomy: Python 3.10 · AirSim · NavRL (PPO) · LiDAR-based occupancy mapping
 
 ---
@@ -60,8 +58,8 @@ flowchart LR
 ### 1. Clone & configure
 
 ```powershell
-git clone https://github.com/MohamadA12-programmer/drone_command_center.git
-cd drone_command_center
+git clone https://github.com/MohamadA20-hash/Deep-RL-Drone-Obstacle-Avoidance-Navigation-with-D.C.C-Drone-Command-Center-.git drone-command-center
+cd drone-command-center
 Copy-Item .env.example .env
 # Open .env and fill in DB_PASSWORD, JWT_SECRET, BRIDGE_AUTH_PASS
 ```
@@ -83,8 +81,29 @@ cd frontend
 flutter pub get
 flutter run -d windows `
     --dart-define=API_BASE_URL=http://localhost:8080 `
-    --dart-define=WS_URL=ws://localhost:8080/ws/telemetry
+    --dart-define=WS_BASE_URL=ws://localhost:8080
 ```
+
+#### Android APK (optional — phone on the same Wi-Fi as the laptop)
+
+Replace `192.168.0.105` with your laptop's LAN IP (`ipconfig` → IPv4 of your active adapter).
+
+```powershell
+cd frontend
+flutter build apk --release `
+    --dart-define=API_BASE_URL=http://192.168.0.105:8080 `
+    --dart-define=WS_BASE_URL=ws://192.168.0.105:8080 `
+    --dart-define=FPV_BASE_URL=http://192.168.0.105:8766/fpv
+```
+
+The APK lands at `frontend/build/app/outputs/flutter-apk/app-release.apk`. Copy it to the phone's Download folder and tap to install (allow "install unknown apps" the first time). On the laptop, open Windows Firewall for the backend + FPV bridge ports:
+
+```powershell
+New-NetFirewallRule -DisplayName "DCC Backend 8080" -Direction Inbound -Protocol TCP -LocalPort 8080 -Action Allow
+New-NetFirewallRule -DisplayName "DCC FPV 8766"     -Direction Inbound -Protocol TCP -LocalPort 8766 -Action Allow
+```
+
+Laptop demo and phone demo can run **simultaneously** against the same backend.
 
 ### 4. Run the AirSim bridge (in a new terminal)
 
@@ -136,16 +155,14 @@ CI runs both on every push to `main` and every pull request — see [.github/wor
 
 ---
 
-## Screenshots
+## Reports & figures
 
-> _Add 3-5 screenshots here before the demo:_
-> 1. `docs/img/dashboard.png` — main map view with a live mission
-> 2. `docs/img/mission-list.png` — pre-seeded missions
-> 3. `docs/img/swagger.png` — auto-generated API docs
-> 4. `docs/img/airsim-flight.png` — AirSim view during autonomous flight
-> 5. `docs/img/emergency-land.png` — kill switch in actionions | Drone arms, scans 360°, plans, flies |
-| 8 | Watch live telemetry + FPV stream | UI | Verify trajectory, obstacle avoidance |
-| 9 | Stop the mission, log out | UI | Clean shutdown |
+The final written report and supporting artifacts live under `report/`:
+
+* `report/DCC report.docx` — final capstone report
+* `report/figures/` — figures referenced in the report
+* `report/uml/` — UML diagrams
+* `report/zap/` — OWASP ZAP baseline scan output
 
 ---
 
@@ -158,8 +175,11 @@ drone-command-center/
 │   ├── src/main/resources/        application.properties, Flyway migrations
 │   ├── Dockerfile                 Multi-stage build → eclipse-temurin:17-jre
 │   └── pom.xml
-├── frontend/                      Flutter dashboard (desktop + web)
+├── frontend/                      Flutter dashboard (Windows desktop, web, Android)
 │   ├── lib/                       core/, features/, ui/
+│   ├── android/                   Android target (APK build)
+│   ├── windows/                   Windows desktop runner
+│   ├── web/                       Flutter web entrypoint
 │   └── pubspec.yaml
 ├── capstone/airsim_testing/       Python NavRL + AirSim bridge
 │   ├── airsim_auto_bridge.py      Bridge entrypoint
@@ -167,7 +187,7 @@ drone-command-center/
 │   ├── command_center_bridge.py   Backend REST/WS client
 │   ├── navrl_model/               PPO policy weights and network code
 │   └── results/                   Evaluation runs used in the report
-├── reports/                       LaTeX-style PDF report (Capstone_System_Report.pdf)
+├── report/                        Capstone report (docx) + figures, UML, ZAP
 ├── docker-compose.yml             Postgres + backend
 ├── .env.example                   Environment template — copy to .env
 └── run-demo.ps1                   One-shot launcher (Windows)

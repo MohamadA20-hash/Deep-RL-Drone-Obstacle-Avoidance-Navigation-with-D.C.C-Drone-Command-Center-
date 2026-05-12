@@ -29,7 +29,12 @@ class FpvCamera extends ConsumerStatefulWidget {
 }
 
 class _FpvCameraState extends ConsumerState<FpvCamera> {
-  static const String _fpvBaseUrl = 'http://localhost:8766/fpv';
+  // Override at build time with --dart-define=FPV_BASE_URL=http://<host>:8766/fpv
+  // (e.g. for an Android phone pointing at the laptop's LAN IP).
+  static const String _fpvBaseUrl = String.fromEnvironment(
+    'FPV_BASE_URL',
+    defaultValue: 'http://localhost:8766/fpv',
+  );
   static const Duration _refreshInterval = Duration(milliseconds: 100);
   static const Duration _staleWindow = Duration(seconds: 2);
 

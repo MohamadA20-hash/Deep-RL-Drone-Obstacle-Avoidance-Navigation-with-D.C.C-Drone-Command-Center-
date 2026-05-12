@@ -41,8 +41,10 @@ public class TelemetryWebSocketHandler extends TextWebSocketHandler {
         // multiple HTTP worker threads. The underlying Tomcat WsRemoteEndpoint is NOT thread-safe;
         // without this wrapper, concurrent broadcastTelemetry() calls produce
         // IllegalStateException: TEXT_PARTIAL_WRITING.
-        // 10s send-time limit, 512 KB buffer.
-        WebSocketSession safeSession = new ConcurrentWebSocketSessionDecorator(session, 10_000, 512 * 1024);
+        // 30s send-time limit, 4 MB buffer. The larger buffer + timeout tolerates
+        // slower clients on Wi-Fi (e.g. an Android phone connected to the LAN
+        // backend) where the per-frame send latency is higher than on localhost.
+        WebSocketSession safeSession = new ConcurrentWebSocketSessionDecorator(session, 30_000, 4 * 1024 * 1024);
         sessions.add(safeSession);
         log.info("WebSocket connection established: {}", safeSession.getId());
 

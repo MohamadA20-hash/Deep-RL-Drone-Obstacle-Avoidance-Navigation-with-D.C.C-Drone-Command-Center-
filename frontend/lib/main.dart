@@ -10,6 +10,15 @@ import 'ui/widgets/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Force landscape orientation on mobile devices so the dashboard layout
+  // (designed for wide aspect ratios) renders correctly on phones/tablets.
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
+  // Hide system bars on mobile to give the dashboard the full screen.
+  // Users can swipe from the edge to temporarily reveal them.
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -50,5 +59,3 @@ class DroneCommandCenterApp extends ConsumerWidget {
     );
   }
 }
-
-

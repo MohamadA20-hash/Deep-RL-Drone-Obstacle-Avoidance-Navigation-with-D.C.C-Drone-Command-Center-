@@ -54,7 +54,8 @@ class SensorRepository {
   Future<List<SensorReading>> listForDrone(String droneId) async {
     final r = await _client.dio.get('/api/drones/$droneId/sensors');
     final body = r.data;
-    final data = (body is Map && body.containsKey('data')) ? body['data'] : body;
+    final data =
+        (body is Map && body.containsKey('data')) ? body['data'] : body;
     if (data is List) {
       return data
           .whereType<Map>()
